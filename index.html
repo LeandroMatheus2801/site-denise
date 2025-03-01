@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Denise Marta Psicóloga</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="login-form">
+        <h2>Login</h2>
+        <input type="password" id="password" placeholder="Senha">
+        <button onclick="login()">Entrar</button>
+    </div>
+    <div id="content" style="display: none;">
+        <nav>
+            <ul>
+                <li><a href="#pacientes">Pacientes</a></li>
+                <li><a href="#calendario">Calendário</a></li>
+            </ul>
+        </nav>
+        <section id="pacientes">
+            <h2>Pacientes</h2>
+            <ul id="lista-pacientes"></ul>
+        </section>
+        <section id="calendario">
+            <h2>Calendário</h2>
+            <div id="calendario-container"></div>
+        </section>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
