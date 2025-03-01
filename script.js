@@ -1,43 +1,67 @@
-const senhaCorreta = "minha_senha_secreta";  // Substitua pela senha desejada
-
-function login() {
-    const senha = document.getElementById("password").value;
-    if (senha === senhaCorreta) {
-        document.getElementById("login-form").style.display = "none";
-        document.getElementById("content").style.display = "block";
-        carregarPacientes();
-        carregarCalendario();
-    } else {
-        alert("Senha incorreta!");
-    }
-}
-
-// Exemplo de pacientes
-const pacientes = [
-    { nome: 'João Silva', idade: 30, telefone: '99999-1234' },
-    { nome: 'Maria Oliveira', idade: 25, telefone: '98888-5678' },
-];
-
-// Exemplo de calendário
-const calendario = [
-    { data: '2025-03-01', paciente: 'João Silva', horario: '14:00' },
-    { data: '2025-03-02', paciente: 'Maria Oliveira', horario: '15:00' },
-];
+let pacientes = [];
+let calendario = [];
 
 function carregarPacientes() {
     const listaPacientes = document.getElementById('lista-pacientes');
+    listaPacientes.innerHTML = ''; // Limpar a lista antes de recarregar
     pacientes.forEach(paciente => {
-        const li = document.createElement('li');
-        li.textContent = `${paciente.nome}, ${paciente.idade} anos, Tel: ${paciente.telefone}`;
-        listaPacientes.appendChild(li);
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+            <td>${paciente.nome}</td>
+            <td>${paciente.status}</td>
+            <td>${paciente.email}</td>
+            <td>${paciente.telefone}</td>
+            <td>${paciente.dataCadastro}</td>
+            <td><button>Ações</button></td>
+        `;
+        listaPacientes.appendChild(tr);
     });
 }
 
 function carregarCalendario() {
     const calendarioContainer = document.getElementById('calendario-container');
+    calendarioContainer.innerHTML = ''; // Limpar o calendário antes de recarregar
     calendario.forEach(evento => {
         const div = document.createElement('div');
         div.textContent = `${evento.data} - ${evento.paciente} - ${evento.horario}`;
         calendarioContainer.appendChild(div);
     });
 }
+
+function salvarPaciente() {
+    const nome = document.getElementById('nome').value;
+    const status = document.getElementById('status').value;
+    const email = document.getElementById('email').value;
+    const dataCadastro = new Date().toLocaleDateString('pt-BR');
+
+    if (nome && status && email) {
+        pacientes.push({ nome, status, email, telefone: '', dataCadastro });
+        carregarPacientes();
+        document.getElementById('nome').value = '';
+        document.getElementById('status').value = '';
+        document.getElementById('email').value = '';
+    } else {
+        alert('Por favor, preencha todos os campos.');
+    }
+}
+
+function salvarEvento() {
+    const data = document.getElementById('data').value;
+    const paciente = document.getElementById('paciente').value;
+    const horario = document.getElementById('horario').value;
+
+    if (data && paciente && horario) {
+        calendario.push({ data, paciente, horario });
+        carregarCalendario();
+        document.getElementById('data').value = '';
+        document.getElementById('paciente').value = '';
+        document.getElementById('horario').value = '';
+    } else {
+        alert('Por favor, preencha todos os campos.');
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    carregarPacientes();
+    carregarCalendario();
+});

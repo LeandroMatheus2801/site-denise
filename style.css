@@ -1,31 +1,86 @@
 body {
     font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
 }
 
-#login-form {
-    max-width: 300px;
-    margin: 50px auto;
-    text-align: center;
-    padding: 20px;
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #333;
+    color: #fff;
+}
+
+.logo h1 {
+    margin: 0;
+}
+
+.search input {
+    padding: 0.5rem;
+    border-radius: 5px;
     border: 1px solid #ccc;
-    border-radius: 10px;
 }
 
-nav ul {
+aside {
+    width: 200px;
+    background-color: #f4f4f4;
+    padding: 1rem;
+}
+
+aside nav ul {
     list-style-type: none;
     padding: 0;
 }
 
-nav ul li {
-    display: inline;
-    margin-right: 10px;
+aside nav ul li {
+    margin-bottom: 1rem;
 }
 
-section {
-    margin-top: 20px;
+aside nav ul li a {
+    text-decoration: none;
+    color: #333;
 }
 
-#calendario-container {
-    display: flex;
-    flex-wrap: wrap;
+main {
+    flex: 1;
+    padding: 2rem;
+}
+
+.form-container {
+    margin-bottom: 1rem;
+}
+
+.form-container input {
+    margin-right: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.actions button, .form-container button {
+    margin-right: 0.5rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    padding: 1rem;
+    border: 1px solid #ddd;
+}
+
+table th {
+    background-color: #f4f4f4;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
 }

@@ -3,31 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Denise Marta Psicóloga</title>
+    <title>Denise Psico</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="login-form">
-        <h2>Login</h2>
-        <input type="password" id="password" placeholder="Senha">
-        <button onclick="login()">Entrar</button>
-    </div>
-    <div id="content" style="display: none;">
+    <header>
+        <div class="logo">
+            <h1>Denise Psico</h1>
+        </div>
+        <div class="search">
+            <input type="text" placeholder="Buscar cliente">
+        </div>
+    </header>
+    <aside>
         <nav>
             <ul>
-                <li><a href="#pacientes">Pacientes</a></li>
-                <li><a href="#calendário">Calendário</a></li>
+                <li><a href="#dashboard">Painel</a></li>
+                <li><a href="#clientes">Clientes</a></li>
+                <li><a href="#agenda">Agenda</a></li>
+                <li><a href="#financeiro">Financeiro</a></li>
+                <li><a href="#relatorios">Relatórios</a></li>
+                <li><a href="#marketing">Marketing</a></li>
+                <li><a href="#configuracao">Configuração</a></li>
+                <li><a href="#minha-clinica">Minha clínica</a></li>
             </ul>
         </nav>
-        <section id="pacientes">
-            <h2>Pacientes</h2>
-            <ul id="lista-pacientes"></ul>
+    </aside>
+    <main>
+        <section id="clientes">
+            <h2>Listagem de clientes</h2>
+            <div class="form-container">
+                <input type="text" id="nome" placeholder="Nome do cliente">
+                <input type="text" id="status" placeholder="Status">
+                <input type="email" id="email" placeholder="E-mail">
+                <button onclick="salvarPaciente()">Salvar</button>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome do cliente</th>
+                        <th>Status</th>
+                        <th>E-mail</th>
+                        <th>Telefone</th>
+                        <th>Data do cadastro</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="lista-pacientes">
+                    <!-- Pacientes serão carregados aqui -->
+                </tbody>
+            </table>
         </section>
         <section id="calendario">
             <h2>Calendário</h2>
-            <div id="calendario-container"></div>
+            <div class="form-container">
+                <input type="date" id="data">
+                <input type="text" id="paciente" placeholder="Nome do paciente">
+                <input type="time" id="horario">
+                <button onclick="salvarEvento()">Salvar</button>
+            </div>
+            <div id="calendario-container">
+                <!-- Calendário será carregado aqui -->
+            </div>
         </section>
-    </div>
+    </main>
     <script src="script.js"></script>
 </body>
 </html>
